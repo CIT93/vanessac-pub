@@ -1,15 +1,19 @@
-<html></html>   
-    <head>  </head>
+<!DOCTYPE html>
+<html lang="en">   
+    <head>
+        <title>Web Page Greeter</title>
+    </head>
     <body>
-        <h1>Greetings!</h1>
-        <formid="greet-form">
-        <inputTextBox="Name">
-        <inputButton="submit"
-    
-    <!--- Add empty element --->
-        <h2>id=greet output = "[Name], Have a good day!"</h2>
-    </body>
-<html> 
+        <h1>Greetings!</h1>                                                        <!-- Add a heading -->
+        <form id="greetForm">                                                      <!-- Add a form and unique id -->
+            <input type="text" id="nameInput" placeholder="Enter Name Here">       <!-- Add text input -->
+            <button type="submit">Submit</button>                                  <!-- Add submit button -->
+        </form>
+        <div id="messageElement"></div>                                            <!-- Add an empty element -->
 
-<!-- Link to JavaScript file -->
-<script link="app.js"></script>
+        <script src="app.js" type="module"></script>                          
+        
+    </body>
+</html> 
+
+
