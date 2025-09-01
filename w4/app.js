@@ -18,5 +18,5 @@ document.addEventListener("DOMContentLoaded", function() {              // Link 
 }); 
 
 // Reviewed code along videos and VSC
-// Gemini helped find and explain why code isn't working
+// Gemini helped find and explain why codes weren't working (did not show correct codes) "Find and explain bugs"
 // Re-researched which commands were for what
