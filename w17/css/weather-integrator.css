@@ -1,0 +1,140 @@
+/* Styles for the main weather display section */
+.weather-card {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #540b0e;
+    border-radius: 8px;
+    background-color: #f7b55170;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Optional: add a subtle shadow */
+}
+
+/* Styles for the heading within the weather section */
+.weather-heading {
+    color: #540b0e;
+    margin-bottom: 15px;
+    font-size: 1.6em; /* Adjust as needed */
+}
+
+/* Styles for the line displaying weather value, location, and date */
+.weather-info-row {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Specific style for the weather value itself */
+.weather-value {
+    font-weight: bold;
+    color: #9e2a2b;
+    font-size: 1.2em; /* Make the number stand out a bit more */
+}
+
+/* Style for the location text */
+.weather-location {
+    font-style: italic;
+    color: #9e2a2b;
+}
+
+/* Style for the date text */
+.weather-date {
+    font-size: 1.1em;
+    color: #9e2a2b;
+}
+
+/* Style for the status message (e.g., loading, error) */
+.weather-status {
+    color: #cc0000; /* Red for errors, can be adjusted for loading */
+    font-weight: bold;
+    margin-top: 15px;
+    min-height: 1.8em; /* Prevent layout shift if message appears */
+}
+
+/* Styles for the Refresh Weather Button */
+.weather-button {
+    background-color: #540b0e;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.weather-button:hover {
+    background-color: #540b0e;
+    transform: translateY(-2px);
+}
+
+.weather-button:active {
+    background-color: #9e2a2b;
+    transform: translateY(0);
+}
+
+.weather-details-grid-3x {      /* Aided by Google Search*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px 0px;
+    margin: 1px auto;
+    padding: 0px 0;
+    border-top: 1px solid #540b0e;
+    border-bottom: 1px solid #540b0e;
+    max-width: 90%;
+}
+
+.weather-details-grid-3x .weather-detail-item {
+    font-size: 1em;
+    text-align: center;
+    padding: 1px 0;
+}
+
+.weather-details-grid-3x .icon-middle {
+    grid-column-start: 2;
+    text-align: center;
+    grid-row: 1 / span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin-top: 5px
+}
+
+.weather-details-grid-3x .icon-middle img {
+    width: 150px !important;
+    height: 150px !important;
+    margin-bottom: 5px;
+}
+
+.weather-details-grid-3x .weather-description {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #8B4513;
+}
+
+.weather-details-grid-3x .weather-detail-item span {
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+/* Basic responsiveness for smaller screens, inheriting from overall style.css */
+@media (max-width: 768px) {
+    .weather-card {
+        padding: 15px;
+    }
+    .weather-heading {
+        font-size: 1.4em;
+    }
+    .weather-info-row {
+        font-size: 1em;
+    }
+    .weather-value {
+        font-size: 1.1em;
+    }
+    .weather-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}

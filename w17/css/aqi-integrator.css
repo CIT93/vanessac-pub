@@ -1,0 +1,124 @@
+/* Styles for the main AQI display section */
+.aqi-card {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #540b0e;
+    border-radius: 8px;
+    background-color: #f7b55170;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Optional: add a subtle shadow */
+}
+
+/* Styles for the heading within the AQI section */
+.aqi-heading {
+    color: #540b0e;
+    margin-bottom: 15px;
+    font-size: 1.6em; /* Adjust as needed */
+}
+
+/* Styles for the line displaying AQI value, location, and date */
+.aqi-info-row {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Specific style for the AQI value itself */
+.aqi-value {
+    font-weight: bold;
+    color: #9e2a2b;
+    font-size: 1.2em; /* Make the number stand out a bit more */
+}
+
+/* Style for the location text */
+.aqi-location {
+    font-style: italic;
+    color: #9e2a2b;
+}
+
+/* Style for the date text */
+.aqi-date {
+    font-size: 0.9em;
+    color: #9e2a2b;
+}
+
+/* Style for the status message (e.g., loading, error) */
+.aqi-status {
+    color: #cc0000; /* Red for errors, can be adjusted for loading */
+    font-weight: bold;
+    margin-top: 15px;
+    min-height: 1.2em; /* Prevent layout shift if message appears */
+}
+
+/* Styles for the Refresh AQI Button */
+.aqi-button {
+    background-color: #540b0e;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.aqi-button:hover {
+    background-color: #540b0e;
+    transform: translateY(-2px);
+}
+
+.aqi-button:active {
+    background-color: #9e2a2b;
+    transform: translateY(0);
+}
+
+.text-green-600 {
+    color: #059669;
+    /* A medium forest green */
+}
+
+.text-yellow-600 {
+    color: #ca8a04;
+    /* A deep, rich yellow */
+}
+
+.text-orange-600 {
+    color: #ea580c;
+    /* A deep, vibrant orange */
+}
+
+.text-red-600 {
+    color: #dc2626;
+    /* A classic, bold red */
+}
+
+.text-purple-600 {
+    color: #9333ea;
+    /* A bright, true purple */
+}
+
+.text-gray-500 {
+    color: #6b7280;
+    /* A medium, neutral gray */
+}
+
+/* Basic responsiveness for smaller screens, inheriting from overall style.css */
+@media (max-width: 768px) {
+    .aqi-card {
+        padding: 15px;
+    }
+    .aqi-heading {
+        font-size: 1.4em;
+    }
+    .aqi-info-row {
+        font-size: 1em;
+    }
+    .aqi-value {
+        font-size: 1.1em;
+    }
+    .aqi-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hobby Selector</title>
+          <script type="module" src="js/app.js" defer></script>
+          <script type="module" src="js/location-services.js" defer></script>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/aqi-integrator.css">
+        <link rel="stylesheet" href="css/weather-integrator.css">
+    </head>
+    <body>
+        <main class="container">
+            <h1>Hobby Time!</h1>
+            <p><b>Need a Hobby?</b></p>
+            <form id="hobbyForm" novalidate>
+                <input type="hidden" id="entryId"> 
+                <fieldset>
+                    <legend>Choose an Activity</legend>
+                    <div class="dropdown">
+                      <button class="dropbutton" type="button">Select</button>
+                      <div id="hobbyDropdown" class="dropdown-content">
+                            <a href="#">Board/Tabletop Roleplaying Games</a>
+                            <a href="#">Camping/Hiking</a>
+                            <a href="#">Cooking/Baking</a>
+                            <a href="#">Drawing/Painting</a>
+                            <a href="#">Exercise/Sports</a>
+                            <a href="#">Fishing</a>
+                            <a href="#">Gardening</a>
+                            <a href="#">Learning a Language</a>
+                            <a href="#">Learning an Instrument</a>
+                            <a href="#">Photography</a>
+                            <a href="#">Reading</a>
+                            <a href="#">Sewing/Embroidery</a>
+                            <a href="#">Traveling</a>
+                            <a href="#">Woodwork</a>
+                            <a href="#">Writing/Poetry</a>
+                      </div>
+                            <span id="hobbyDropdownError" class="error-message"></span>
+                    </div>
+                </fieldset>
+                <input type="hidden" id ="selectedHobby" name="selectedHobby">
+
+                <section id="aqi-display" class="aqi-card" style="display: none";>
+                        <h2 class="aqi-heading">Local Air Quality Index</h2>
+                    <p class="aqi-info-row">
+                    Current AQI: <span id="currentAqiValue" class="aqi-value">--</span> at
+                    <span id="aqiLocation" class="aqi-location">--</span> (<span id="aqiDate" class="aqi-date">--</span>)
+                    </p>
+                    <p class="note aqi-status" id="aqiStatusMessage"></p>
+                    <button id="refreshAqiButton" class="aqi-button">Refresh AQI</button>
+                </section>
+
+                <section id="weather-display" class="weather-card" style="display: none";>      <!--Corrected by Gemini-->
+                        <h2 class="weather-heading">Local Weather</h2>
+                    <p class="weather-info-row">
+                    Current Weather: <span id="currentWeatherValue" class="weather-value">--</span> at
+                    <span id="weatherLocation" class="weather-location">--</span> (<span id="weatherDate" class="weather-date">--</span>)
+                    </p>
+                    <div class="weather-details-grid-3x">
+
+                        <div class="weather-detail-item">Feels Like: <span id="tempFeelsLike">--</span></div>
+                        <div class="weather-detail-item">Visibility: <span id="visibility">--</span></div>
+                        <div class="weather-detail-item">High/Low: <span id="tempMinMax">--</span></div>
+                        <div class="weather-detail-item">Pressure: <span id="pressure">--</span></div>
+                        <div class="weather-detail-item">Sunrise: <span id="sunrise">--</span></div>
+                        <div class="weather-detail-item">Wind: <span id="windSpeed">--</span> <span id ="windDirection">--</span></div>
+                        <div class="weather-detail-item">Sunset: <span id="sunset">--</span></div>
+                        <div class="weather-detail-item">Humidity: <span id="humidity">--</span></div>
+
+                        <div class="weather-detail-item icon-middle">
+                            <img id="weatherIcon" src="" alt="Weather Icon" style="width: 150px; height: 150px;">
+                            <p id="detailDescription" class="weather-description">--</p>
+                        </div> 
+                        <div class="weather-detail-item"></div>
+                    </div>
+
+                    <p class="note weather-status" id="weatherStatusMessage"></p>
+                    <button id="refreshWeatherButton" class="weather-button">Refresh Weather</button>
+                </section>
+
+                <fieldset>
+                    <legend>Time</legend>
+                    <div class="form-group", >
+                        <label for="Time">Hours Per Week Available:</label>
+                        <input type="number" id="Time" min="0" value="0" placeholder="e.g., 2">
+                        <span id="timeError" class="error-message"></span>
+                    </div>
+                    <div class="checkbox">
+				        <input type="checkbox" id="noTimeAvailable">
+				        <label for="noTimeAvailable">No Time Available</label>
+                        <span id="timeMessageDisplay"></span>
+			        </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Funding</legend>
+                    <div class="form-group">
+                        <label for="Funding">Initial and Long Term Cost:</label>
+                        <div class="input-icon-container">
+                             <input type="number" id="Funding" min="0" value="0" placeholder="50">
+                             <span class="currency-symbol">$</span>
+                        </div>
+                            <span id="fundingError" class="error-message"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Sociability</legend>
+                    <div class="form-group">
+                       <p class="radio-group-heading">Social Requirement:</p>
+                        <div class="radio-group">
+                        <label for="Alone">
+                            <input type="radio" id="Solo" name="Social" value="Solo">
+                            Solo
+                        </label>
+                        <label for="Low">
+                            <input type="radio" id="Friends Only" name="Social" value="Friends Only">
+                            Friends Only
+                        </label>
+                        <label for="High">
+                            <input type="radio" id="Invite Everyone" name="Social" value="Invite Everyone">
+                            Invite Everyone
+                        </label>
+                        </div>
+                            <span id="socialError" class="error-message"></span>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Dedication</legend>
+                    <div class="form-group">
+                        <p class="radio-group-heading">Will You Follow Through With This Activity?</p>
+                        <div class="radio-group">
+                        <label for="committed">
+                            <input type="radio" id="Committed" name="Dedication" value="Committed">
+                            Hell Yeah!
+                        </label>
+                        <label for="interested">
+                            <input type="radio" id="Interested" name="Dedication" value="Interested">
+                            Hard to Say
+                        </label>
+                        <label for="lostCause">
+                            <input type="radio" id="LostCause" name="Dedication" value="Lost Cause">
+                            Meh...
+                        </label>
+                        </div>
+                            <span id="dedicationError" class="error-message"></span>
+                    </div>
+                </fieldset>
+
+                <button type="submit" id="submitButton">Submit</button>
+                <button type="button" id="clearFormButton" class="secondary-button">Clear Form</button>
+            </form>
+
+            <section id="results" class="results-container" style="display: none;">
+                <h2>Hobby Interest:</h2>
+                <p id="hResults" class="highlight-total">0 Points</p>
+                <h3 id="finalDecisionHeadline"></h3> 
+                <p id="finalDecisionDetail"></p>
+                <div id="breakdown">
+                    <h3>Breakdown:</h3>
+                    <ul>
+                        <li id="selection">Hobby Selected: 0 Points</li>
+                        <li id="time">Time Available: 0 Points</li>
+                        <li id="funding">Funding: 0 Points</li>
+                        <li id="social">Social Level: 0 Points</li>
+                        <li id="dedication">Dedication: 0 Points</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="compareSection" style="display: none;">        <!-- Corrected by Gemini -->
+                <h2>Which is Better?</h2>
+                <div class="compareDisplay">
+                    <div id="hobby1Compare" class="comparePanel">
+                        <h3>Hobby 1: <span id="hobby1Name">Select from Table</span></h3>
+                        <p class="totalCompare">Total: <span id="totalHobby1">0 Pts</span></p>                        
+                        <ul id="compareBreakdown1" class="compareBreakdown"></ul>
+                    </div>
+                    <div id="hobby2Compare" class="comparePanel">     
+                        <h3>Hobby 2: <span id="hobby2Name">Select from Table</span></h3>
+                        <p class="totalCompare">Total: <span id="totalHobby2">0 Pts</span></p>                        
+                        <ul id="compareBreakdown2" class="compareBreakdown"></ul>
+                    </div>
+                </div>
+            </section>
+                <button type="button" id="resetCompareButton" class="secondary-button" style="display: none;">Clear Comparison</button>
+                
+            <section class="table-container">
+                <h2>Your Saved Hobby Entries</h2>
+                <button type="button" id="clearAllDataButton" class="danger-button" style="display: block;">Clear All Saved Data?</button>
+                <table id="hobbyTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Hobby</th>
+                            <th>Time Pts</th>
+                            <th>Funding Pts</th>
+                            <th>Social Pts</th>
+                            <th>Dedication Pts</th>
+                            <th>Total</th>
+                            <th>Actions</th> <!-- For Edit/Delete buttons (will be added later)-->
+                        </tr>
+                    </thead>
+                    <tbody> <!-- Table rows will be rendered by JavaScript--> </tbody>
+                </table>
+                <p id="noEntriesMessage" class="note" style="display: block;">No entries saved yet.</p>
+            </section>
+        </main>
+    </body>
+    </html>
